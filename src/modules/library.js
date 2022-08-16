@@ -83,7 +83,6 @@ const displayToDo = () => {
     todoLiElement.appendChild(todoCheckboxElement);
     todoLiElement.appendChild(todoDescriptionElement);
 
-    // actionBtns.appendChild(editBtn);
     actionBtns.appendChild(deleteBtn);
     actionBtns.appendChild(pointsBtn);
 
