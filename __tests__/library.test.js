@@ -72,4 +72,17 @@ describe('Editing, updating and clear completed tasks', () => {
     clearAllCompleted();
     expect(toDoList).toHaveLength(4);
   });
+
+  test('Clear All Completed Tasks using DOM', () => {
+    eraseToDoList();
+    addToDo('Wash the laundry');
+    addToDo('Travel to Gwalior');
+    addToDo('Jump to the sky');
+    addToDo('Go to the beach');
+    updateCheckbox(1, true);
+    updateCheckbox(4, true);
+    clearAllCompleted();
+    const liTasks = document.querySelectorAll('ul li');
+    expect(liTasks).toHaveLength(2);
+  });
 });
