@@ -3,7 +3,7 @@
  */
 
 import {
-  toDoList, addToDo, removeList,
+  toDoList, addToDo, removeList, saveEdit, updateCheckbox,
 } from '../src/modules/library.js';
 
 document.body.innerHTML = `
@@ -38,5 +38,24 @@ describe('Check add and remove', () => {
     addToDo('Go to the beach');
     removeList(1);
     expect(toDoList).toHaveLength(2);
+  });
+});
+
+describe('Editing, updating and clear completed tasks', () => {
+  test('Edit an item', () => {
+    eraseToDoList();
+    addToDo('Wash the laundry');
+    addToDo('Travel to Arequipa');
+    saveEdit('Travel to Iquitos', 2);
+    expect(toDoList[1].description).toBe('Travel to Iquitos');
+  });
+
+  test('Update a completed Task', () => {
+    eraseToDoList();
+    addToDo('Wash the laundry');
+    addToDo('Travel to Iquitos');
+    addToDo('Study for the test');
+    updateCheckbox(2, true);
+    expect(toDoList[1].completed).toBe(true);
   });
 });
