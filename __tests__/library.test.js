@@ -30,13 +30,13 @@ describe('Check add and remove', () => {
     addToDo('Travel to Arequipa');
     expect(toDoList).toHaveLength(2);
   });
-});
 
-test('Removing a task', () => {
-  eraseToDoList();
-  addToDo('Save the Queen');
-  addToDo('Jump to the sky');
-  addToDo('Go to the beach');
-  removeList(1);
-  expect(toDoList).toHaveLength(2);
+  test('Removing a task', () => {
+    eraseToDoList();
+    addToDo('Save the Queen');
+    addToDo('Jump to the sky');
+    addToDo('Go to the beach');
+    removeList(1);
+    expect(toDoList).toHaveLength(2);
+  });
 });
