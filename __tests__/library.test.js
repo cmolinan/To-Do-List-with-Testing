@@ -3,7 +3,7 @@
  */
 
 import {
-  toDoList, addToDo, removeList, saveEdit, updateCheckbox,
+  toDoList, addToDo, removeList, saveEdit, updateCheckbox, clearAllCompleted,
 } from '../src/modules/library.js';
 
 document.body.innerHTML = `
@@ -57,5 +57,19 @@ describe('Editing, updating and clear completed tasks', () => {
     addToDo('Study for the test');
     updateCheckbox(2, true);
     expect(toDoList[1].completed).toBe(true);
+  });
+
+  test('Clear All Completed Tasks', () => {
+    eraseToDoList();
+    addToDo('Wash the laundry');
+    addToDo('Travel to Iquitos');
+    addToDo('Study for the test');
+    addToDo('Save the Queen');
+    addToDo('Jump to the sky');
+    addToDo('Go to the beach');
+    updateCheckbox(2, true);
+    updateCheckbox(4, true);
+    clearAllCompleted();
+    expect(toDoList).toHaveLength(4);
   });
 });
