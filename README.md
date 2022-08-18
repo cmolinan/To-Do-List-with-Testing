@@ -13,6 +13,7 @@ https://cmolinan.github.io/To-Do-List/
 - HTML / CSS 
 - JavaScript: objects, classes and modules with ES6 syntax 
 - Webpack
+- JES for testing
 
 ## Getting Started
 
@@ -21,10 +22,13 @@ https://cmolinan.github.io/To-Do-List/
 
 - Install the dependencies using `npm install` and then run the project from the root of the folder using this command `npm run start`
 
-## Author
+## Authors
 
 - Carlos Molina
   GitHub: https://github.com/cmolinan
+
+  Dhuruv Singh
+  GitHub https://github.com/DhuruvSingh
 
 ## 🤝 Contributing
 

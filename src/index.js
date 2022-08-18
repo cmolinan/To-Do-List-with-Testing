@@ -4,6 +4,7 @@ import {
   clearAllCompleted, todoEdit,
 } from './modules/library.js';
 
+// Listener for Add a new To-Do item
 const desc = document.getElementById('addToDo');
 desc.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
@@ -13,6 +14,7 @@ desc.addEventListener('keyup', (event) => {
   }
 });
 
+// Listener for Clear-All-Completed Button
 const clearbutton = document.getElementById('clearAllBtn');
 clearbutton.addEventListener('click', () => {
   clearAllCompleted();

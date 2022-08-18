@@ -5,6 +5,7 @@ let toDoList = [];
 let todoEdit = null;
 let isEditing = false;
 
+// Storage
 const saveData = () => {
   localStorage.setItem('listToDo', JSON.stringify(toDoList));
 };
@@ -17,7 +18,9 @@ const getData = () => {
     toDoList = localFormData;
   }
 };
+// ----
 
+// Preparations to edit a To-Do Item.
 const editList = (todo) => {
   isEditing = true;
   todoEdit = todo;
@@ -26,7 +29,7 @@ const editList = (todo) => {
   desc.focus();
 };
 
-// remove a To Do item
+// Remove a To Do item
 const removeList = (indexID) => {
   const desc = document.getElementById('addToDo');
   toDoList = toDoList.filter((ind) => ind.index !== indexID);
@@ -41,6 +44,7 @@ const removeList = (indexID) => {
   displayToDo();
 };
 
+// Updates after Changes at a Checkbox (for completed or not) for a To-Do item
 const updateCheckbox = (index, state) => {
   for (let i = 0; i < toDoList.length; i += 1) {
     if (toDoList[i].index === index) {
@@ -121,12 +125,12 @@ const displayToDo = () => {
       updateCheckbox(data.index, todoCheckboxElement.checked);
     });
 
-    // Listener for Points Menu
+    // Listener for "Points" Menu
     pointsBtn.addEventListener('click', () => {
       actions();
     });
 
-    // Listener for input - delete Item
+    // Listener for remove a To-Do item
     deleteBtn.addEventListener('click', () => {
       removeList(data.index);
     });
@@ -141,7 +145,7 @@ const displayToDo = () => {
 };
 // End of Main Object
 
-// Add New "To Do" item
+// Add New To-Do item
 const addToDo = (value1) => {
   const desc = document.getElementById('addToDo');
   if (value1 !== '') {
@@ -160,7 +164,7 @@ const addToDo = (value1) => {
   }));
 };
 
-// Save the new "To Do" item
+// Save an Edit a To-Do item
 const saveEdit = (value1, index1) => {
   const desc = document.getElementById('addToDo');
   if (value1 !== '') {
@@ -181,7 +185,7 @@ const saveEdit = (value1, index1) => {
 // Function: read variable isEditing
 const getIsEditing = () => isEditing;
 
-// remove and save Completed items. Then display List
+// remove and save Completed To-Do items. Then display List
 const clearAllCompleted = () => {
   const desc = document.getElementById('addToDo');
   toDoList = toDoList.filter((todo) => !todo.completed);
