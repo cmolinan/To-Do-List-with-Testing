@@ -1,5 +1,6 @@
 let toDoList = [];
 let isEditing = false;
+// eslint-disable-next-line import/no-mutable-exports
 let todoEdit = null;
 
 const desc = document.getElementById('addToDo');
@@ -62,7 +63,6 @@ const displayToDo = () => {
     }
     saveData();
   };
-
 
   // Dynamic generation of the To-Do List
   toDoList.forEach((data) => {
