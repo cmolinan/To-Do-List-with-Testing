@@ -43,15 +43,26 @@ const displayToDo = () => {
     displayToDo();
   };
 
-  const toggleToDoStatus = (todo) => {
+  // const toggleToDoStatus = (todo) => {
+  //   for (let i = 0; i < toDoList.length; i += 1) {
+  //     if (toDoList[i].index === todo.index) {
+  //       toDoList[i].completed = !todo.completed;
+  //       break;
+  //     }
+  //   }
+  //   saveData();
+  // };
+
+  const toggleToDoStatus = (index, state) => {
     for (let i = 0; i < toDoList.length; i += 1) {
-      if (toDoList[i].index === todo.index) {
-        toDoList[i].completed = !todo.completed;
+      if (toDoList[i].index === index) {
+        toDoList[i].completed = state;
         break;
       }
     }
     saveData();
   };
+
 
   // Dynamic generation of the To-Do List
   toDoList.forEach((data) => {
@@ -116,7 +127,7 @@ const displayToDo = () => {
       if (todoCheckboxElement.checked) {
         todoDescriptionElement.classList.add('changeChk');
       } else todoDescriptionElement.classList.remove('changeChk');
-      toggleToDoStatus(data);
+      toggleToDoStatus(data.index, todoCheckboxElement.checked);
     });
 
     // Listener for Points Menu
@@ -140,11 +151,11 @@ const displayToDo = () => {
 // End of Main Object
 
 // Add New "To Do" item
-const addToDo = () => {
+const addToDo = (value1) => {
   const desc = document.getElementById('addToDo');
-  if (desc.value) {
+  if (value1 !== '') {
     const completed = false;
-    const description = desc.value;
+    const description = value1;
     const index = toDoList.length + 1;
     toDoList.push({ completed, description, index });
     displayToDo();
@@ -159,12 +170,12 @@ const addToDo = () => {
 };
 
 // Save the new "To Do" item
-const saveEdit = () => {
+const saveEdit = (value1, index1) => {
   const desc = document.getElementById('addToDo');
-  if (desc.value) {
+  if (value1 !== '') {
     toDoList = toDoList.map((todo) => {
-      if (todo.index === todoEdit.index) {
-        return { ...todo, description: desc.value };
+      if (todo.index === index1) {
+        return { ...todo, description: value1 };
       }
       return todo;
     });
@@ -194,5 +205,5 @@ const clearAllCompleted = () => {
 };
 
 export {
-  getData, clearAllCompleted, addToDo, saveEdit, displayToDo, getIsEditing,
+  getData, todoEdit, clearAllCompleted, addToDo, saveEdit, displayToDo, getIsEditing,
 };
